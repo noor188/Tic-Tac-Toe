@@ -6,7 +6,8 @@
 
 <ul>
   <li>Python</li>
-  <li>Data Structures and algorithems: Minimax</li>
+  <li>Data Structures: Set, Frontier (stack, queue)</li>
+  <li>Search algorithem: Minimax</li>
 </ul>
 
 # Sample output
