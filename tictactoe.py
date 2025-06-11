@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+import copy
 
 X = "X"
 O = "O"
@@ -47,7 +48,22 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    # create a deep copy
+    currentBoard = copy.deepcopy(board)
+
+    # check if action is valid
+    (i, j) = action
+    rows = len(board)
+    cols = len(board[0])
+    i_inbound = 0 <= i < rows
+    j_inbound = 0 <= j < cols
+
+    if not i_inbound or not j_inbound:
+        raise IndexError(f"Invalid action: indicies ({i},{j}) are out of bounds for a board with dimensions {rows} X {cols}.")
+
+    # Create new baord state and return board
+    currentBoard[i][j] = turn
+    return currentBoard
 
 
 def winner(board):
@@ -76,3 +92,4 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     raise NotImplementedError
+

@@ -1,0 +1,1 @@
+result(initial_state(), (0,0))
