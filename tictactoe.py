@@ -69,9 +69,35 @@ def result(board, action):
 def winner(board):
     """
     Returns the winner of the game, if there is one.
-    """
-    raise NotImplementedError
+    """    
+    winner = None
 
+    # find the winner
+    # search for X
+    if is_winner(board, "X"):
+        winner = "X"
+    # search for O
+    elif is_winner(board, "O"):
+        winner = "O"
+    
+    # winner = None , for tie or game in progress
+    return winner
+
+def is_winner(board, player):
+    win_moves = {
+        "horizontally" : [[(0,0), (0,1), (0,2)], [(1,0), (1,1), (1,2)], [(2,0), (2,1), (2,2)]],
+        "vertically"   : [[(0,0), (1,0), (2,0)], [(0,1), (1,1), (2,1)], [(0,2), (1,2), (2,2)]],
+        "diagonally"   : [[(0,0), (1,1), (2,2)], [(0,2), (1,1), (2,0)]]
+    }
+
+    for moves in win_moves:
+        for move in moves:
+            x0,y0 = move[0]
+            x1,y1 = move[1]
+            x2,y2 = move[2]
+            if board[x0][y0] == player and board[x1][y1] == player and board[x2][y2] == player:
+                return True
+    return False
 
 def terminal(board):
     """
