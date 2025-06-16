@@ -103,8 +103,14 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
-
+    # Game over if there is a winner or if all cells are filled
+    is_there_a_winner = winner(board)
+    is_all_cells_filled = all(cell is not EMPTY for row in board for cell in row)
+    if is_there_a_winner or is_all_cells_filled: 
+        return True 
+    
+    # Game in progress
+    return False
 
 def utility(board):
     """
